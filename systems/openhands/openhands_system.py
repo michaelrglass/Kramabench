@@ -220,11 +220,15 @@ class OpenHands(System):
             if self.verbose:
                 print(f"Executing command in container")
 
-            exec_result = subprocess.run(
-                docker_exec_cmd,
-                capture_output=not self.verbose,
-                text=True
-            )
+            try:
+                exec_result = subprocess.run(
+                    docker_exec_cmd,
+                    capture_output=not self.verbose,
+                    text=True,
+                    timeout=600
+                )
+            except subprocess.TimeoutExpired:
+                print(f"WARNING: Agent timeout!")
 
             # Change ownership of files in /logs to current user
             chown_cmd = [
