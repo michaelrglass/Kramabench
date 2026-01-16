@@ -60,7 +60,7 @@ def aggregate_results(system_name, results_df):
         if row["metric"] in ["success", "llm_paraphrase", "rae_score", "f1", "f1_approximate"]:
             total_support += row["total_value_support"]
             total_score += row["value_support"] * row["value_mean"]
-    print(f"Total score is: {total_score/total_support*100}")
+    print(f"Total score is: {total_score/total_support*100}, over {total_support}")
     return workload_results_df
 
 
