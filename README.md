@@ -1,3 +1,78 @@
+# KramaBench Parity Experiments
+This branch has experiment to check parity between the original benchmark and the Harbor adapter.
+See https://github.com/michaelrglass/harbor/tree/kramabench
+
+# Experiments
+
+
+
+### KramaBench SUT Run 4
+
+```bash
+for dataset in archeology astronomy biomedical environment legal wildfire; do
+python evaluate.py \
+  --sut OpenHands \
+  --workload ${dataset} 2>&1 > ./runs/${dataset}_4.log
+done
+
+python convert_to_harbor_results.py parity-experiments/OpenHands_4 -o parity-experiments/OpenHands_4/result.json
+
+archeology score = 0.4166666666666667
+astronomy score = 0.4583333333333333
+biomedical score = 0.5555555555555556
+environment score = 0.7
+legal score = 0.7
+wildfire score = 0.7762283569907021
+Overall score = 0.6423153413154302
+Wrote 104 results to parity-experiments/OpenHands_4/result.json
+```
+
+### KramaBench SUT Run 3
+```bash
+for dataset in archeology astronomy biomedical environment legal wildfire; do
+python evaluate.py \
+  --sut OpenHands \
+  --workload ${dataset} 2>&1 > ./runs/${dataset}_3.log
+done
+
+python convert_to_harbor_results.py parity-experiments/OpenHands_3 -o parity-experiments/OpenHands_3/result.json
+
+archeology score = 0.4166666666666667
+astronomy score = 0.2916666666666667
+biomedical score = 0.6666666666666666
+environment score = 0.7
+legal score = 0.7333333333333333
+wildfire score = 0.7524188331811783
+Overall score = 0.6375076490077378
+Wrote 104 results to parity-experiments/OpenHands_3/result.json
+```
+
+### KramaBench SUT Run 2
+
+```bash
+for dataset in archeology astronomy biomedical environment legal wildfire; do
+python evaluate.py \
+  --sut OpenHands \
+  --workload ${dataset} 2>&1 > ./runs/${dataset}_2.log
+done
+
+python convert_to_harbor_results.py parity-experiments/OpenHands_2 -o parity-experiments/OpenHands_2/result.json
+
+archeology score = 0.4166666666666667
+astronomy score = 0.4166666666666667
+biomedical score = 0.6666666666666666
+environment score = 0.7
+legal score = 0.7666666666666667
+wildfire score = 0.7751147053431198
+Overall score = 0.6661289308865914
+Wrote 104 results to parity-experiments/OpenHands_2/result.json
+```
+
+### KramaBench SUT Run 1
+
+This run was discarded because results were not properly recorded.
+
+
 # KramaBench
 *KramaBench* is an open-source benchmark for **end-to-end data-science agents**.
 Unlike question-answer–only corpora, each task in KramaBench asks a system to build a *complete* data pipeline: load raw files, clean them, transform them, and compute a final answer.
